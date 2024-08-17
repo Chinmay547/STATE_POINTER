@@ -34,7 +34,6 @@ font = ImageFont.load_default()
 status_label = tk.Label(window, text="", font=("Helvetica", 14))
 status_label.pack(pady=10)
 
-
 # Main loop
 while len(guessed_state) < 29:
     answer_state = simpledialog.askstring("Guess the State", "Enter the name of the state:")
