@@ -9,11 +9,11 @@ window.title("Map Coordinates")
 window.geometry("700x600")
 
 # Load and resize the image
-original_image = Image.open("STATE_IDENTIFIER/Map.png").resize((700, 600))
+original_image = Image.open("Map.png").resize((700, 600))
 photo_image = ImageTk.PhotoImage(original_image)
 
 # Load state names and coordinates
-state_file = pd.read_csv("STATE_IDENTIFIER/state_name.csv")
+state_file = pd.read_csv("state_name.csv")
 all_state = state_file['state'].tolist()
 state_coords = {row['state']: (row['x'], row['y']) for _, row in state_file.iterrows()}
 
