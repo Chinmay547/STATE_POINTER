@@ -34,15 +34,9 @@ font = ImageFont.load_default()
 status_label = tk.Label(window, text="", font=("Helvetica", 14))
 status_label.pack(pady=10)
 
-def update_status():
-    """Update the status label with the number of states identified and remaining."""
-    num_identified = len(guessed_state)
-    num_remaining = len(all_state) - num_identified
-    status_label.config(text=f"States Identified: {num_identified} | States Remaining: {num_remaining}")
 
 # Main loop
 while len(guessed_state) < 29:
-    update_status()  # Update status before each user input
     answer_state = simpledialog.askstring("Guess the State", "Enter the name of the state:")
     if answer_state is None:
         continue
