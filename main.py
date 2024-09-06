@@ -3,12 +3,12 @@ import pandas as pd
 from PIL import Image, ImageTk, ImageDraw, ImageFont
 from tkinter import simpledialog, messagebox
 
-# Initialize the main window
+
 window = tk.Tk()
 window.title("Map Coordinates")
 window.geometry("700x600")
 
-# Load and resize the image
+#uploading image
 original_image = Image.open("STATE_IDENTIFIER/Map.png").resize((700, 600))
 photo_image = ImageTk.PhotoImage(original_image)
 
@@ -17,24 +17,20 @@ state_file = pd.read_csv("STATE_IDENTIFIER/state_name.csv")
 all_state = state_file['state'].tolist()
 state_coords = {row['state']: (row['x'], row['y']) for _, row in state_file.iterrows()}
 
-# Create Canvas widget
+# widget
 canvas = tk.Canvas(window, width=700, height=600)
 canvas.pack(fill=tk.BOTH, expand=True)
 canvas.create_image(0, 0, anchor=tk.NW, image=photo_image)
 
-# Initialize variables
+
 guessed_state = []
 marked_image = original_image.copy()
 draw = ImageDraw.Draw(marked_image)
-
-# Load default PIL font
 font = ImageFont.load_default()
 
-# Label for showing the status
 status_label = tk.Label(window, text="", font=("Helvetica", 14))
 status_label.pack(pady=10)
 
-# Main loop
 while len(guessed_state) < 29:
     answer_state = simpledialog.askstring("Guess the State", "Enter the name of the state:")
     if answer_state is None:
